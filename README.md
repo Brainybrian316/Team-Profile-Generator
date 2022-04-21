@@ -7,8 +7,8 @@
   <a href="https://github.com/Brainybrian316/Team-Profile-Generator/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://github.com/Brainybrian316/Team-Profile-Generator/blob/master/LICENSE" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/github/license/Brainybrian316/Team-Profile-Generator" />
+  <a href="https://opensource.org/licenses/MIT" target="_blank">
+    <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-GREEN.svg" />
   </a>
 </p>
 
@@ -74,6 +74,6 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2022 [Brainybrian316](https://github.com/Brainybrian316).<br />
-This project is [ISC](https://github.com/Brainybrian316/Team-Profile-Generator/blob/master/LICENSE) licensed.
+This project is [ISC](https://opensource.org/licenses/MIT) licensed.
 
 ***
