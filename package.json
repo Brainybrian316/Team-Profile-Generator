@@ -4,7 +4,8 @@
   "description": "Profile Generator for employer.ß",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
+  
   },
   "repository": {
     "type": "git",
