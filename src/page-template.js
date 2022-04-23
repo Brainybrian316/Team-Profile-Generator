@@ -1,4 +1,31 @@
+function generateTeamHTML(data) {
+    let teamHTML = ' ok data';
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].role === 'Manager') {
+            ` <div class="card bg-info">
+            <div class="card-body">
+            <h5 class="card-title fs-1">${data.name}</h5>
+            <h6 class="card-subtitle mb-2  fs-3 text-muted border-bottom border-2">Manager</h6>
+            <p class="card-text p-1 fs-5">ID: ${data.id}</p>
+            <p class="card-text fs-5">Email: ${data.email}</p>
+            <p class="card-text fs-5">Office Number: ${data.officeNumber}</p>
+            </div>
+            </div>`
+            console.log(data[i]);
+        } else if (data[i].role === 'Engineer') {
+            console.log(data[i]);
+        } else if (data[i].role === 'Intern') {
+            console.log(data[i]);
+        }
+
+    }
+    return teamHTML;
+}
+
+
 function generateHTML(data) {
+    console.log(data);
+
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -19,15 +46,7 @@ function generateHTML(data) {
             <h1 class="text-center bg-primary text-white">My Team</h1>
             <div class="row d-flex justify-content-evenly p-5 mx-auto">
             <div class="col-3">
-            <div class="card bg-info">
-            <div class="card-body">
-            <h5 class="card-title fs-1">${data.name}</h5>
-            <h6 class="card-subtitle mb-2  fs-3 text-muted border-bottom border-2">Manager</h6>
-            <p class="card-text p-1 fs-5">ID: ${data.id}</p>
-            <p class="card-text fs-5">Email: ${data.email}</p>
-            <p class="card-text fs-5">Office Number: ${data.officeNumber}</p>
-            </div>
-            </div>
+            ${generateTeamHTML(data)}
             </div>
             </div>
             

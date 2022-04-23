@@ -1,12 +1,9 @@
-// const Employee = require('./lib/Employee');
-
-// var myEmployee = new Employee('John', 1, 'email');
-
-// myEmployee.printStats();
-
-// const generateHTML = require('./src/page-template');
+const generateHTML = require('./src/page-template');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
 function writeToFile(fileName, data) {
     fs.writeFile('./dist/index.html', data, (err) => {
@@ -15,57 +12,7 @@ function writeToFile(fileName, data) {
     })
 }
 
-// const collectInputs = async (inputs = []) => {
-//     const prompts = [{
-//             type: 'input',
-//             name: 'name',
-//             message: 'What is your name?'
-//         },
-//         {
-//             type: 'input',
-//             name: 'id',
-//             message: 'What is your id #?'
-//         },
-//         {
-//             type: 'input',
-//             name: 'email',
-//             message: 'What is your email?'
-//         },
-//         {
-//             type: 'input',
-//             name: 'officeNumber',
-//             message: 'What is your office number?',
-//         },
-//         {
-//             type: 'list',
-//             name: 'roles',
-//             message: 'Would you like to to next?',
-//             choices: ['engineer', 'add intern', 'done']
-//         },
-//         {
-//             type: 'confirm',
-//             name: 'again',
-//             message: 'Enter another input? ',
-//             default: true
-//         }
-//     ];
-
-//     const {
-//         again,
-//         ...answers
-//     } = await inquirer.prompt(prompts);
-//     const newInputs = [...inputs, answers];
-//     return again ? collectInputs(newInputs) : newInputs;
-// };
-
-// const main = async () => {
-//     const inputs = await collectInputs();
-//     console.log(inputs);
-// };
-
-// main();
-
-
+let saveData = [];
 
 const engineerPrompts = [{
         type: 'input',
@@ -87,12 +34,6 @@ const engineerPrompts = [{
         name: 'github',
         message: 'What is your GitHub username?'
     },
-    {
-        type: 'confirm',
-        name: 'again',
-        message: 'Would you like to add another employee?',
-        default: true
-    }
 ]
 
 const internPrompts = [{
@@ -115,22 +56,32 @@ const internPrompts = [{
         name: 'school',
         message: 'What is the name of your school?'
     },
-    {
-        type: 'confirm',
-        name: 'again',
-        message: 'Would you like to add another intern?',
-        default: true
-    }
 ]
 
-function addNewRole(role) {
-    if (role === 'engineer') {
-        inquirer.prompt(engineerPrompts)
-
-    }
-    if (role === 'intern') {
-        inquirer.prompt(internPrompts)
-    }
+function addNewRole() {
+    inquirer.prompt([{
+        type: 'list',
+        name: 'roles',
+        message: 'Would you like to to next?',
+        choices: ['add engineer', 'add intern', 'done']
+    }]).then(function (answers) {
+        if (answers.roles === 'add engineer') {
+            inquirer.prompt(engineerPrompts).then(function (answers) {
+                const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+                saveData.push(engineer)
+                addNewRole();
+            })
+        } else if (answers.roles === 'add intern') {
+            inquirer.prompt(internPrompts).then(function (answers) {
+                const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+                saveData.push(intern)
+                addNewRole();
+            })
+        } else {
+            const html = generateHTML(saveData);
+            writeToFile('index.html', html);
+        }
+    })
 }
 
 inquirer.prompt([{
@@ -152,19 +103,11 @@ inquirer.prompt([{
             type: 'input',
             name: 'officeNumber',
             message: 'What is your office number?',
-        },
-        {
-            type: 'confirm',
-            name: 'engineer',
-            message: 'Would you like to add engineer?',
-            default: false,
-        },
+        }
     ])
     .then(function (data) {
-        if (data.engineer) {
-            addNewRole('engineer');
-        } else {
-            const html = generateHTML(data);
-            writeToFile('index.html', html);
-        }
-    });
+        const manager = new Manager(data.name, data.id, data.email, data.officeNumber);
+        saveData.push(manager)
+        addNewRole()
+
+    })
