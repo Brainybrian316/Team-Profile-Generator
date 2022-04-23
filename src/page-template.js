@@ -1,10 +1,3 @@
-// const Employee = require('../lib/Employee');
-
-// var myEmployee = new Employee('John', 1, 'email');
-
-// myEmployee.printStats();
-// console.log(myEmployee);
-
 function generateHTML(data) {
     return `
     <!DOCTYPE html>
