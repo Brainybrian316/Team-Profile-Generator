@@ -1,59 +1,57 @@
-function generateTeamHTML(values) {
+function generateTeamHTML(saveData) {
     let teamHTML = '';
-    for (let i = 0; i < values.length; i++) {
-        if (values[i].role === 'Manager') {
+    for (let i = 0; i < saveData.length; i++) {
+        if (saveData.role === 'Manager') {
             ` 
             <div class="col-3">
             <div class="card bg-info">
             <div class="card-body">
-            <h5 class="card-title fs-1">${values[i].name}</h5>
+            <h5 class="card-title fs-1">${saveData.name}</h5>
             <h6 class="card-subtitle mb-2  fs-3 text-muted border-bottom border-2">Manager</h6>
-            <p class="card-text p-1 fs-5">ID: ${values[i].id}</p>
-            <p class="card-text fs-5">Email: ${values[i].email}</p>
-            <p class="card-text fs-5">Office Number: ${values[i].officeNumber}</p>
+            <p class="card-text p-1 fs-5">ID: ${saveData.id}</p>
+            <p class="card-text fs-5">Email: ${saveData.email}</p>
+            <p class="card-text fs-5">Office Number: ${saveData.officeNumber}</p>
             </div>
             </div>
             </div>`
-            console.log(values[i]);
-        } else if (values[i].role === 'Engineer') {
+            console.log(saveData);
+        } else if (saveData.role === 'Engineer') {
             ` 
             <div class="col-3">
             <div class="card bg-info">
             <div class="card-body">
-            <h5 class="card-title fs-1">${values[i].name}</h5>
+            <h5 class="card-title fs-1">${saveData.name}</h5>
             <h6 class="card-subtitle mb-2  fs-3 text-muted border-bottom border-2">Engineer</h6>
-            <p class="card-text p-1 fs-5">ID: ${values[i].id}</p>
-            <p class="card-text fs-5">Email: ${values[i].email}</p>
-            <p class="card-text fs-5">GitHub: ${values[i].github}</p>
+            <p class="card-text p-1 fs-5">ID: ${saveData.id}</p>
+            <p class="card-text fs-5">Email: ${saveData.email}</p>
+            <p class="card-text fs-5">GitHub: ${saveData.github}</p>
             </div>
             </div>
             </div>`
-            console.log(values[i]);
-        } else if (values[i].role === 'Intern') {
+            console.log(saveData);
+        } else if (saveData.role === 'Intern') {
             `
             <div class="col-3">
              <div class="card bg-info">
             <div class="card-body">
-            <h5 class="card-title fs-1">${values[i].name}</h5>
+            <h5 class="card-title fs-1">${saveData.name}</h5>
             <h6 class="card-subtitle mb-2  fs-3 text-muted border-bottom border-2">Intern</h6>
-            <p class="card-text p-1 fs-5">ID: ${values[i].id}</p>
-            <p class="card-text fs-5">Email: ${values[i].email}</p>
-            <p class="card-text fs-5">School: ${values[i].school}</p>
+            <p class="card-text p-1 fs-5">ID: ${saveData.id}</p>
+            <p class="card-text fs-5">Email: ${saveData.email}</p>
+            <p class="card-text fs-5">School: ${saveData.school}</p>
             </div>
             </div>
             </div>`
-            console.log(data[i]);
+            console.log(saveData);
         }
     }
+    console.log(saveData)
+    
     return teamHTML;
-}
-
-
-
-
+} 
 
 function generateHTML(data) {
-let teamHTML = generateTeamHTML(data);
+
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -74,14 +72,8 @@ let teamHTML = generateTeamHTML(data);
             <h1 class="text-center bg-primary text-white">My Team</h1>
             <div class="row d-flex justify-content-evenly p-5 mx-auto">
            
-            ${generateTeamHTML(data.filter(values => values.role === 'Manager')).toString()}
-         
-            ${generateTeamHTML(data.filter(values => values.role === 'Engineer'))}
-            
-            ${generateTeamHTML(data.filter(values => values.role === 'Intern'))}
-            
+            ${generateTeamHTML(data)}
             </div>
-
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
             </script>
@@ -89,4 +81,5 @@ let teamHTML = generateTeamHTML(data);
             `
 }
 
-module.exports = generateHTML;
+
+module.exports = generateHTML
