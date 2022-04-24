@@ -18,7 +18,7 @@
 
 ### ✨ [Demo](https://user-images.githubusercontent.com/99369106/164992557-8eaf23b6-8282-4f3a-8e3e-711c9586f2de.mp4)
 
-###  [Sample Of Create Webpage](https://github.com/Brainybrian316/Team-Profile-Generator#Team-profile-generator-sample.png)
+###  📸 [Screenshot](./assets/images/Team-profile-generator-sample.png)
 
 ## Install
 
