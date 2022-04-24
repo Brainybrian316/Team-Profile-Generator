@@ -2,6 +2,7 @@
 const generateEmployees = (myEmployees) => {
     //  creates the manager html
     const generateManager = (manager) => {
+        // template literal to create html for manager
         return `
         <div class="col-4 p-5">
         <div class="card bg-danger text-dark">
@@ -16,9 +17,10 @@ const generateEmployees = (myEmployees) => {
         </div>
         `
     }
-
-const generateEngineer = (engineer) => {
-    return `
+    //  creates the engineer html
+    const generateEngineer = (engineer) => {
+        // template literal to create html for engineer
+        return `
     <div class="col-4 p-5">
     <div class="card bg-warning text-dark">
     <div class="card-body">
@@ -31,10 +33,12 @@ const generateEngineer = (engineer) => {
     </div>
     </div>
     `
-};
+    };
 
-const generateIntern = (intern) => {
-    return `
+    // creates the intern html
+    const generateIntern = (intern) => {
+        // template literal to create html for intern
+        return `
     <div class="col-4 p-5">
     <div class="card bg-success text-dark">
     <div class="card-body">
@@ -47,31 +51,45 @@ const generateIntern = (intern) => {
     </div>
     </div>
     `
-};
+    };
 
-const html = [];
+    //  an empty array to hold the employees based on their role and inputs from the user to be pushed later
+    const html = [];
 
-html.push(
-    myEmployees
-    .filter((employee) => employee.getRole() === 'Manager')
-    .map((manager) => generateManager(manager))
-);
-html.push(
-    myEmployees
-    .filter((employee) => employee.getRole() === 'Engineer')
-    .map((engineer) => generateEngineer(engineer))
-    .join('')
-);
-html.push(
-    myEmployees
-    .filter((employee) => employee.getRole() === 'Intern')
-    .map((intern) => generateIntern(intern))
-    .join('')
-);
-
-return html.join('');
+    //  pushes the manager html to the array
+    html.push(
+        // the data from generateEmployees is passed in as an argument
+        myEmployees
+        // filters the array to find the manager
+        .filter((employee) => employee.getRole() === 'Manager')
+        // maps the array to generate the html for the manager
+        .map((manager) => generateManager(manager))
+    );
+    html.push(
+        // the data from generateEmployees is passed in as an argument
+        myEmployees
+        // filters the array to find the engineer
+        .filter((employee) => employee.getRole() === 'Engineer')
+        // maps the array to generate the html for the engineer
+        .map((engineer) => generateEngineer(engineer))
+        // joins the html array to create a string
+        .join('')
+    );
+    html.push(
+        // the data from generateEmployees is passed in as an argument
+        myEmployees
+        // filters the array to find the intern
+        .filter((employee) => employee.getRole() === 'Intern')
+        // maps the array to generate the html for the intern
+        .map((intern) => generateIntern(intern))
+        // joins the html array to create a string
+        .join('')
+    );
+    // returns all roles and employees and joins the html array to create a string
+    return html.join('');
 }
 
+// exports the generateEmployees function
 module.exports = (myEmployees) => {
     return `
     <!DOCTYPE html>
@@ -101,4 +119,3 @@ module.exports = (myEmployees) => {
             </body>
             `
 }
-
