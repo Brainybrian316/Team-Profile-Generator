@@ -9,7 +9,7 @@ const generateEmployees = (myEmployees) => {
         <h5 class="card-title fs-1">${manager.getName()}</h5>
         <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-mug-hot mr-2"></i> ${manager.getRole()}</h6>
         <p class="card-text p-1 fs-5">ID: ${manager.getId()}</p>
-        <p class="card-text p-1 fs-5">Email: ${manager.getEmail()}</p>
+        <p class="card-text p-1 fs-5">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p>
         <p class="card-text p-1 fs-5">Office Number: ${manager.getOfficeNumber()}</p>
         </div>
         </div>
@@ -25,8 +25,8 @@ const generateEngineer = (engineer) => {
     <h5 class="card-title fs-1">${engineer.getName()}</h5>
     <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-glasses mr-2"></i> ${engineer.getRole()}</h6>
     <p class="card-text p-1 fs-5">ID: ${engineer.getId()}</p>
-    <p class="card-text p-1 fs-5">Email: ${engineer.getEmail()}</p>
-    <p class="card-text p-1 fs-5">GitHub: ${engineer.getGithub()}</p>
+    <p class="card-text p-1 fs-5">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
+    <p class="card-text p-1 fs-5">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank" rel="no">${engineer.getGithub()}</a></p>
     </div>
     </div>
     </div>
@@ -41,7 +41,7 @@ const generateIntern = (intern) => {
     <h5 class="card-title fs-1">${intern.getName()}</h5>
     <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-user-graduate mr-2"></i> ${intern.getRole()}</h6>
     <p class="card-text p-1 fs-5">ID: ${intern.getId()}</p>
-    <p class="card-text p-1 fs-5">Email: ${intern.getEmail()}</p>
+    <p class="card-text p-1 fs-5">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></p>
     <p class="card-text p-1 fs-5">School: ${intern.getSchool()}</p>
     </div>
     </div>
