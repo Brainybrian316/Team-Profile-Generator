@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> Profile generator for employer
+> A node package used to generate a webpage that will display a team of employees basic info. This will enable the user to have quick access to their employees email's and GitHub profiles. The package will create three classes: Manager, Engineer, Intern. Classes are also color coated by groupings. 
 
 ### 🏠 [Homepage](https://github.com/Brainybrian316/Team-Profile-Generator#readme)
 
@@ -27,7 +27,7 @@ npm install
 ## Usage
 
 ```sh
-will update later
+node index.js
 ```
 
 ## Run tests
