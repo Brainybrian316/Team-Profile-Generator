@@ -1,7 +1,7 @@
 // initial modules 
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHTML = require('./src/page-template');
+const generateEmployees= require('./src/page-template');
 //  library modules
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
@@ -90,9 +90,9 @@ const questions = async() => {
     if (nextEmployee.nextEmployee) {
        return questions();
     }
-    //  if nextEmployee is false, calls generateHTML function
+    //  if nextEmployee is false, calls generateEmployees function
     else {
-       return writeToFile()
+       return  writeToFile();
     }
 }
 
@@ -100,7 +100,10 @@ questions();
 
 function writeToFile() {
     //  creates html file
-    fs.writeFilesSync('./dist/index.html', generateHTML(saveTeamData));
+    fs.writeFile('./dist/index.html', generateEmployees(saveTeamData), err => {
+        if (err) throw err;
+        console.log('Successfully wrote to index.html');
+    })
 }
 
 //     //  prompts questions for next Employee
