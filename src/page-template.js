@@ -1,31 +1,67 @@
-function generateTeamHTML(data) {
-    let savedInput = '';
-    for (let i = 0; i < data.length; i++) {
-        if (data.role === 'Manager') {
-            ` <div class="card bg-info">
-            <div class="card-body">
-            <h5 class="card-title fs-1">${data.name}</h5>
-            <h6 class="card-subtitle mb-2  fs-3 text-muted border-bottom border-2">Manager</h6>
-            <p class="card-text p-1 fs-5">ID: ${data.id}</p>
-            <p class="card-text fs-5">Email: ${data.email}</p>
-            <p class="card-text fs-5">Office Number: ${data.officeNumber}</p>
-            </div>
-            </div>`
-            console.log(data[i]);
-        } else if (data[i].role === 'Engineer') {
-            console.log(data[i]);
-        } else if (data[i].role === 'Intern') {
-            console.log(data[i]);
-        }
+// function generateTeamHTML(data) {
+//     let savedInput = '';
+//     for (let i = 0; i < data.length; i++) {
+//         if (data === 'manager') {
+//             savedInput += `
+//             <div class="card m-3" style="width: 18rem;">
+//             <div class="card-body">
+//             <h5 class="card-title">${data[i].name}</h5>
+//             <h6 class="card-subtitle mb-2 text-muted">${data[i].role}</h6>
+//             <p class="card-text">ID: ${data[i].id}</p>
+//             <p class="card-text">Email: ${data[i].email}</p>
+//             <p class="card-text">Office Number: ${data[i].officeNumber}</p>
+//             </div>
+//             </div>
+//             `
+//         } else if (data === 'engineer') {
+//             savedInput += `
+//             <div class="card m-3" style="width: 18rem;">
+//             <div class="card-body">
+//             <h5 class="card-title">${data[i].name}</h5>
+//             <h6 class="card-subtitle mb-2 text-muted">${data[i].role}</h6>
+//             <p class="card-text">ID: ${data[i].id}</p>
+//             <p class="card-text">Email: ${data[i].email}</p>
+//             <p class="card-text">Github: ${data[i].github}</p>
+//             </div>
+//             </div>
+//             `
+//         } else if (data === 'intern') {
+//             savedInput += `
+//             <div class="card m-3" style="width: 18rem;">
+//             <div class="card-body">
+//             <h5 class="card-title">${data[i].name}</h5>
+//             <h6 class="card-subtitle mb-2 text-muted">${data[i].role}</h6>
+//             <p class="card-text">ID: ${data[i].id}</p>
+//             <p class="card-text">Email: ${data[i].email}</p>
+//             <p class="card-text">School: ${data[i].school}</p>
+//             </div>
+//             </div>
+//             `
+//         }
+//     }
+//     return savedInput;
+// }
 
-    }
-    return savedInput;
-}
-
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 
 function generateHTML(data) {
     console.log(data);
-
+    for (let i = 0; i < data.length; i++) {
+        // if (data[i].hasOwnProperty("github")) {
+        //     data[i].github;
+        // } else {
+        //    data[i].school;
+        // }
+        // }
+        if (data[i].roles === "add engineer") {
+            data[i].github;
+        } else if (data[i].roles === "add intern") {
+            data[i].school;
+        }
+    }
+        
+        
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -46,7 +82,31 @@ function generateHTML(data) {
             <h1 class="text-center bg-primary text-white">My Team</h1>
             <div class="row d-flex justify-content-evenly p-5 mx-auto">
             <div class="col-3">
-            ${generateTeamHTML(data)}
+            <div class="card-body">
+            <h5 class="card-title">${data[0].name}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+            <p class="card-text">ID: ${data[0].id}</p>
+            <p class="card-text">Email: ${data[0].email}</p>
+            <p class="card-text">Office Number: ${data[0].officeNumber}</p>
+            </div>
+            </div>
+            <div class="col-3">
+            <div class="card-body">
+            <h5 class="card-title">${data[i].name}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
+            <p class="card-text">ID: ${data[i].id}</p>
+            <p class="card-text">Email: ${data[i].email}</p>
+            <p class="card-text">Github: ${data[i].github}</p>
+            </div>
+            </div>
+            <div class="col-3">
+            <div class="card-body">
+            <h5 class="card-title">${data[i].name}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
+            <p class="card-text">ID: ${data[i].id}</p>
+            <p class="card-text">Email: ${data[i].email}</p>
+            <p class="card-text">School: ${data[i].school}</p>
+            </div>
             </div>
             </div>
             
@@ -56,5 +116,7 @@ function generateHTML(data) {
             </body>
             `
 }
+
+
 
 module.exports = generateHTML;
