@@ -18,6 +18,8 @@
 
 ### ✨ [Demo](insert video demo later)
 
+###  [Sample Of Create Webpage](https://github.com/Brainybrian316/Team-Profile-Generator#Team-profile-generator-sample.png)
+
 ## Install
 
 ```sh
