@@ -3,11 +3,11 @@ const generateEmployees = (myEmployees) => {
     //  creates the manager html
     const generateManager = (manager) => {
         return `
-        <div class="col-3">
+        <div class="col-4 p-5">
         <div class="card bg-danger text-dark">
         <div class="card-body">
         <h5 class="card-title fs-1">${manager.getName()}</h5>
-        <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h6>
+        <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-mug-hot mr-2"></i> ${manager.getRole()}</h6>
         <p class="card-text p-1 fs-5">ID: ${manager.getId()}</p>
         <p class="card-text p-1 fs-5">Email: ${manager.getEmail()}</p>
         <p class="card-text p-1 fs-5">Office Number: ${manager.getOfficeNumber()}</p>
@@ -19,11 +19,11 @@ const generateEmployees = (myEmployees) => {
 
 const generateEngineer = (engineer) => {
     return `
-    <div class="col-3">
+    <div class="col-4 p-5">
     <div class="card bg-warning text-dark">
     <div class="card-body">
     <h5 class="card-title fs-1">${engineer.getName()}</h5>
-    <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h6>
+    <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-glasses mr-2"></i> ${engineer.getRole()}</h6>
     <p class="card-text p-1 fs-5">ID: ${engineer.getId()}</p>
     <p class="card-text p-1 fs-5">Email: ${engineer.getEmail()}</p>
     <p class="card-text p-1 fs-5">GitHub: ${engineer.getGithub()}</p>
@@ -35,11 +35,11 @@ const generateEngineer = (engineer) => {
 
 const generateIntern = (intern) => {
     return `
-    <div class="col-3">
+    <div class="col-4 p-5">
     <div class="card bg-success text-dark">
     <div class="card-body">
     <h5 class="card-title fs-1">${intern.getName()}</h5>
-    <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h6>
+    <h6 class="card-subtitle mb-2 fs-2"><i class="fas fa-user-graduate mr-2"></i> ${intern.getRole()}</h6>
     <p class="card-text p-1 fs-5">ID: ${intern.getId()}</p>
     <p class="card-text p-1 fs-5">Email: ${intern.getEmail()}</p>
     <p class="card-text p-1 fs-5">School: ${intern.getSchool()}</p>
@@ -91,7 +91,7 @@ module.exports = (myEmployees) => {
             
             <body>
             <h1 class="text-center bg-primary text-white p-5">My Team</h1>
-            <div class="row d-flex justify-content-evenly p-5 mx-auto">
+            <div class="row">
             ${generateEmployees(myEmployees)}
             </div>
             
