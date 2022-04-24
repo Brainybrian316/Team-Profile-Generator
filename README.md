@@ -65,7 +65,8 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
+<p> Give a ⭐️ if this project helped you! </p>
+<p> Buy me a coffee by becoming a patreon ☕️ </p>
 
 <a href="https://www.patreon.com/brainybrian316">
   <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
