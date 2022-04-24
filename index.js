@@ -77,38 +77,32 @@ const questions = async() => {
         const intern = new Intern(answers.name, answers.id, answers.email, internAnswers.school);
         //  pushes Intern object to saveTeamData array
         saveTeamData.push(intern);
-    }    // end of questions function 
-
-    async function promptQuestions() {
-        await questions();
-
-        const addMemberAns = await inquirer.prompt([
-            {
-                type: 'list',
-                name: 'addMember',
-                message: 'Would you like to add another team member?',
-                choices: ['Add a new member', 'Create team'],
-            }
-        ])
-
-        if (addMemberAns.addMember === 'Add a new member') {
-            return promptQuestions();
-        }
-        return createTeam();
     }
-    
-    promptQuestions();
-
-    function createTeam() {
-        //  creates html file
-        fs.writeFilesSync('./dist/team.html', generateHTML(saveTeamData), (err) => {
-            if (err) throw err;
-            console.log('Team created!');
-        })
+    //  prompts questions for next Employee
+    const nextEmployee = await inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'nextEmployee',
+            message: 'Would you like to add another employee?'
+        }
+    ])
+    //  if nextEmployee is true, prompts questions for next Employee
+    if (nextEmployee.nextEmployee) {
+       return questions();
+    }
+    //  if nextEmployee is false, calls generateHTML function
+    else {
+       return writeToFile()
     }
 }
 
-//     }
+questions();
+
+function writeToFile() {
+    //  creates html file
+    fs.writeFilesSync('./dist/index.html', generateHTML(saveTeamData));
+}
+
 //     //  prompts questions for next Employee
 //     const nextEmployee = await inquirer.prompt([
 //         {
@@ -125,7 +119,6 @@ const questions = async() => {
 //     else {
 //         createTeam();
 //     }
-// }
 
 // function createTeam() {
 //     //  creates html file
@@ -136,4 +129,33 @@ const questions = async() => {
 //         console.log('Success!');
 //     })
 // }
+
+// async function promptQuestions() {
+//     await questions();
+
+//     const addMemberAns = await inquirer.prompt([
+//         {
+//             type: 'list',
+//             name: 'addMember',
+//             message: 'Would you like to add another team member?',
+//             choices: ['Add a new member', 'Create team'],
+//         }
+//     ])
+
+//     if (addMemberAns.addMember === 'Add a new member') {
+//         return promptQuestions();
+//     }
+//     return createTeam();
+// }
+
+// promptQuestions();
+
+// function createTeam() {
+//     //  creates html file
+//     fs.writeFilesSync('./dist/team.html', generateHTML(saveTeamData), (err) => {
+//         if (err) throw err;
+//         console.log('Team created!');
+//     })
+// }
+
 
