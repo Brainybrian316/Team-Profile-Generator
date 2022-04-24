@@ -1,5 +1,5 @@
 // creates employees
-const generateEmployees = (employees) => {
+const generateEmployees = (myEmployees) => {
     //  creates the manager html
     const generateManager = (manager) => {
         return `
@@ -52,18 +52,18 @@ const generateIntern = (intern) => {
 const html = [];
 
 html.push(
-    team
+    myEmployees
     .filter((employee) => employee.getRole() === 'Manager')
     .map((manager) => generateManager(manager))
 );
 html.push(
-    team
+    myEmployees
     .filter((employee) => employee.getRole() === 'Engineer')
     .map((engineer) => generateEngineer(engineer))
     .join('')
 );
 html.push(
-    team
+    myEmployees
     .filter((employee) => employee.getRole() === 'Intern')
     .map((intern) => generateIntern(intern))
     .join('')
@@ -72,7 +72,7 @@ html.push(
 return html.join('');
 }
 
-module.exports = (team) => {
+module.exports = (myEmployees) => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -92,7 +92,7 @@ module.exports = (team) => {
             <body>
             <h1 class="text-center bg-primary text-white">My Team</h1>
             <div class="row d-flex justify-content-evenly p-5 mx-auto">
-            ${generateEmployees(team)}
+            ${generateEmployees(myEmployees)}
             </div>
             
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
